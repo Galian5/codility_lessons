@@ -2,7 +2,8 @@
 #Count the minimal number of jumps that the small frog must perform to reach its target.
 
 def solution(x, y, d)
-    ((y-x)/d)+1
+  d = d.to_f  
+  ((y-x)/d).ceil
 
 end
 
