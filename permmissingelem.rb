@@ -1,10 +1,15 @@
+# a bit ugly, rewrite
 def solution(a)
-  x=0
+  check = 1
   a.sort!
-  a.each_with_index do |value, index|
-    if a[index+1] != value+1 then
-      x=(value+1)
+  a.length.times do
+    if check != a[check-1]
+      break
+    else
+      check += 1
     end
   end
-  x
+  check
 end
+
+puts solution([1,2,3,5])
