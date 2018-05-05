@@ -1,5 +1,5 @@
 def solution(a)
-  a = a.sort.uniq.reject{ |x| x<1 }
+  a = a.sort.uniq.reject{ |x| x<0 }
   count=1
   a.each do |i|
     if i != count
