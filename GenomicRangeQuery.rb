@@ -1,23 +1,23 @@
+
 def solution(s, p, q)
-  temparr = []
-  score = []
-  s = s.split('')
-  s.each do |x|
-    if x == 'A'
-      temparr << 1
-    elsif x == 'C'
-      temparr << 2
-    elsif x == 'G'
-      temparr << 3
-    elsif x == 'T'
-      temparr << 4
-    end  
+  prefix_sums = [[0] * 4]
+  nucleo = { "A" => 0, "C" => 1, "G" => 2, "T" => 3 }
+
+  s.chars.each_with_index do |char, i|
+      prefix_sums[i + 1] = prefix_sums[i].clone
+      prefix_sums[i + 1][nucleo[char]] += 1
   end
-  p.each_with_index do |value,index|
-    score << temparr[p[index]..q[index]]uniq.sort.first
-    
+
+  p.zip(q).map do |first, last|
+    nucleo.each do |char, ii|
+      occurrences = prefix_sums[last + 1][ii] - prefix_sums[first][ii]
+      break (ii + 1) if occurrences > 0
+    end
   end
-score
-end  
+end
+  
+
 
 solution('CAGCCTA', [2, 5, 0], [4, 5, 6])
+
+#had to do some googling and found awesome things: zip and chars. I completetly forgot about them
