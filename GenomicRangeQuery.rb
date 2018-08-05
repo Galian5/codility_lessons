@@ -14,7 +14,10 @@ def solution(s, p, q)
       break (ii + 1) if occurrences > 0
     end
   end
+
+puts prefix_sums
 end
+
   
 
 
